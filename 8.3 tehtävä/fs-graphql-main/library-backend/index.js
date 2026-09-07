@@ -127,7 +127,9 @@ const resolvers = {
   },
 
   authors: {
-    bookCount: () => books.length,
+    bookCount: (root) => {
+      return books.filter(book => book.author === root.name).length
+  }
   }
   }
 
