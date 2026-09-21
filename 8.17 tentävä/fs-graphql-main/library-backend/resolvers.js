@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 
 const resolvers = {
   Query: {
+    bookCount: async () => Book.countDocuments(),
     booksCount: async () => Book.countDocuments(),
     authorCount: async () => Author.countDocuments(),
     allBooks: async (root, args) => {
@@ -22,8 +23,9 @@ const resolvers = {
         query.author = author._id
       }
 
-      if (args.genres) {
-        query.genres = args.genres
+      const genre = args.genre || args.genres
+      if (genre) {
+        query.genres = genre
       }
 
       const books = await Book.find(query).populate('author')
@@ -39,6 +41,7 @@ const resolvers = {
 
     },
   Author: {
+    id: (root) => root._id.toString(),
     bookCount: async (root) => {
       return Book.countDocuments({ author: root._id })
     },
@@ -108,7 +111,7 @@ const resolvers = {
     }
 
     if (!author) {
-      throw new GraphQLError('Author not found')
+      return null
     }
 
     author.born = args.setBornTo
