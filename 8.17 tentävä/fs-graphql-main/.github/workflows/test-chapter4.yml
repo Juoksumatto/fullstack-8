@@ -18,13 +18,13 @@ jobs:
           node-version: 24
 
       - name: Install library-backend dependencies
-        working-directory: library-backend
+        working-directory: 8.17 tentävä/fs-graphql-main/library-backend
         run: npm ci
 
       - name: Install test dependencies
-        working-directory: tests-chapter4
+        working-directory: 8.17 tentävä/fs-graphql-main/tests-chapter4
         run: npm ci
 
       - name: Run tests
-        working-directory: tests-chapter4
+        working-directory: 8.17 tentävä/fs-graphql-main/tests-chapter4
         run: npm test
