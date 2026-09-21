@@ -22,6 +22,7 @@ const typeDefs = /* GraphQL */`
     name: String!
     born: Int
     bookCount: Int!
+    id: ID!
   }
 
   type Mutation {
@@ -52,9 +53,10 @@ const typeDefs = /* GraphQL */`
   }
 
   type Query {
+    bookCount: Int
     booksCount: Int
     authorCount: Int
-    allBooks(author: String, genres: String): [Book!]!
+    allBooks(author: String, genre: String, genres: String): [Book!]!
     allAuthors: [Author!]!
     me: User
   }
