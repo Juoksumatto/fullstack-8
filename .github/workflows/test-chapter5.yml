@@ -19,23 +19,23 @@ jobs:
           node-version: 24
 
       - name: Install library-backend dependencies
-        working-directory: library-backend
+        working-directory: 8.24 tentävä/fs-graphql-main/library-backend
         run: npm ci
 
       - name: Install library-frontend dependencies
-        working-directory: library-frontend
+        working-directory: 8.24 tentävä/fs-graphql-main/library-frontend
         run: npm ci
 
       - name: Install E2E test dependencies
-        working-directory: tests-chapter5
+        working-directory: 8.24 tentävä/fs-graphql-main/tests-chapter5
         run: npm ci
 
       - name: Install Playwright browsers
-        working-directory: tests-chapter5
+        working-directory: 8.24 tentävä/fs-graphql-main/tests-chapter5
         run: npx playwright install chromium --with-deps
 
       - name: Run E2E tests
-        working-directory: tests-chapter5
+        working-directory: 8.24 tentävä/fs-graphql-main/tests-chapter5
         run: npx playwright test
 
       - name: Upload test report
