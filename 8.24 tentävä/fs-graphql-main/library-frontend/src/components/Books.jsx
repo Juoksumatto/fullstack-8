@@ -58,19 +58,17 @@ const Books = ({ show = true, favoriteGenre }) => {
         </tbody>
       </table>
       {!favoriteGenre && <div>
-        <button onClick={() => setSelectedGenre('all genres')}>
-          all genres
-        </button>
-        {genres.map((genre) => (
-          <button key={genre} onClick={() => setSelectedGenre(genre)}>
-            {genre}
-          </button>
-        ))}
+        <select
+          value={selectedGenre}
+          onChange={(event) => setSelectedGenre(event.target.value)}
+        >
+          <option value="all genres">all genres</option>
           {genres.map((genre) => (
             <option key={genre} value={genre}>
               {genre}
             </option>
           ))}
+        </select>
       </div>}
     </div>
   )
